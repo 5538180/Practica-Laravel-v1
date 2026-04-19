@@ -2,7 +2,7 @@
 
 Este repositorio contiene un proyecto de **Laravel 11** configurado desde cero junto a **Laradock** como entorno de contenedores Docker. A continuación se detalla paso a paso todo el proceso que se ha llevado a cabo para inicializar este entorno, de forma que quede documentado para futuras referencias.
 
-## 🛠 Pasos de Configuración Inicial (Historial de Setup)
+##  Pasos de Configuración Inicial (Historial de Setup)
 
 ### 1. Clonar el repositorio
 El primer paso consistió en traernos el repositorio vacío de GitHub a nuestra máquina local:
