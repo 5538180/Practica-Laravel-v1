@@ -26,7 +26,7 @@ erDiagram
     PARTIDAS {
         bigint id PK
         bigint torneo_id FK
-        bigint ganador_id FK "nullable"
+        bigint equipo_id FK "nullable"
         datetime fecha_programada
         varchar url_transmision
         timestamp created_at
@@ -62,7 +62,7 @@ erDiagram
         bigint equipo_id FK "nullable"
         varchar alias
         varchar correo UK
-        timestamp correo_verificado_en
+        timestamp correo_verificado_en "nullable"
         varchar contrasena
         timestamp created_at
         timestamp updated_at
@@ -71,9 +71,9 @@ erDiagram
     PERFILES {
         bigint id PK
         bigint usuario_id FK "UK"
-        varchar ruta_avatar
-        varchar usuario_twitter
-        text biografia
+        varchar ruta_avatar "nullable"
+        varchar usuario_twitter "nullable"
+        text biografia "nullable"
         timestamp created_at
         timestamp updated_at
     }
@@ -126,14 +126,14 @@ erDiagram
     %% ─────────────────────────────────────────────
 
     %% Relaciones 1 a 1
-    USUARIOS ||--|| PERFILES : "tiene_perfil"
-    EQUIPOS ||--|| SEDES : "tiene_gaming_house"
+    USUARIOS ||--o| PERFILES : "tiene_perfil"
+    EQUIPOS ||--o| SEDES : "tiene_gaming_house"
 
     %% Relaciones 1 a N (Muchos a Uno)
     EQUIPOS ||--o{ USUARIOS : "contrata_jugadores"
     VIDEOJUEGOS ||--o{ TORNEOS : "organiza"
     TORNEOS ||--o{ PARTIDAS : "se_divide_en"
-    EQUIPOS ||--o{ PARTIDAS : "gana"
+    EQUIPOS o|--o{ PARTIDAS : "gana"
 
     %% Relaciones N a M (Implementadas a través de sus tablas pivote)
     TORNEOS ||--o{ EQUIPO_TORNEO : "incluye"
